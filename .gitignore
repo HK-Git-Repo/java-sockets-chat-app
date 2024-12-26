@@ -1,4 +1,5 @@
 ### IntelliJ IDEA ###
+screens/
 out/
 target/
 !**/src/main/**/out/
