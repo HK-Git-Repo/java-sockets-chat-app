@@ -1,5 +1,5 @@
 <h1>Chat Application - Java Sockets</h1>
-<p>This project is a multi-client chat application built with Java 17, designed to explore socket programming. The application is developed in two steps:</p>
+<p>This project is a multi-client chat application built with Java, designed to explore socket programming. The application is developed in two steps:</p>
 <ul>
 <li>Non-Secure Communication: The initial version uses plain sockets for communication.</li>
 <li>Secure Communication: The last version implements SSL for secure communication using Java's SSL API.</li>
