@@ -16,23 +16,23 @@ The application supports:
 <h3>Project Structure</h3>
 <img src="./screens/structure.png">
 <h3>Compile the Application</h3>
-```
+<pre>
 javac -d target/classes src/main/java/kad/dev/*.java
-```
+</pre>
 <h3>Package into a JAR</h3>
-```
+<pre>
 jar cfm target/server.jar src/main/recources/MANIFEST.TXT -C target/classes .
-```
+</pre>
 <h3>Run the Server</h3>
-```
+<pre>
 java -jar target/server.jar
-```
+</pre>
 <h5>After Running Server</h5>
 <img src="./screens/run_server.png">
 <h5>Connect as Telnet Clients</h5>
 <h3>Telnet command:</h3>
-```
-telnet <server_socket_ip> <server_socket_port>
-```
+<pre>
+telnet [server_socket_ip] [server_socket_port]
+</pre>
 <img src="./screens/telnet.png">
 <img src="./screens/server_after.png">
