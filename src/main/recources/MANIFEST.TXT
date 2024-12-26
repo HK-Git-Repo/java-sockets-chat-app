@@ -1,0 +1,1 @@
+Main-Class: java.kad.dev.Server

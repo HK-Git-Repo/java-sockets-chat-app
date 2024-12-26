@@ -1,9 +1,6 @@
-package main.server;
+package main.java.kad.dev;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -13,7 +10,7 @@ public class SecureSocketServer extends Thread {
     @Override
     public void run() {
         try (ServerSocket serverSocket = new ServerSocket(this.PORT)) {
-            System.out.println("Server Socket Running with [NON SECURE] connexion on "+HostIP.IP()+":"+this.PORT);
+            System.out.println("Server Socket Running with [NON SECURE] connexion on "+ HostIP.IP()+":"+this.PORT);
             while (true) {
                 System.out.println("Listening ...");
                 Socket socket = serverSocket.accept();

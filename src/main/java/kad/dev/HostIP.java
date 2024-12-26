@@ -1,4 +1,4 @@
-package main.server;
+package main.java.kad.dev;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

@@ -1,4 +1,4 @@
-package main.server;
+package main.java.kad.dev;
 
 import java.io.BufferedReader;
 import java.io.IOException;
