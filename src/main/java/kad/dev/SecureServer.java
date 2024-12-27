@@ -3,8 +3,8 @@ package main.java.kad.dev;
 import java.io.Console;
 import java.util.Scanner;
 
-public class Server {
-    private static String[] databaseCredentials() {
+public class SecureServer {
+    /*private static String[] databaseCredentials() {
         String[] res = new String[2];
         Console console = System.console();
         if (console == null) {
@@ -22,12 +22,12 @@ public class Server {
         String password = new String(passwordArray);
         res[1] = password;
         return res;
-    }
+    }*/
     public static void main(String[] args) {
 
-        String[] credentials = databaseCredentials();
-        DatabaseConnection dbInstance = DatabaseConnection.getInstance(credentials[0], credentials[1]);
+       // String[] credentials = databaseCredentials();
+        DatabaseConnection dbInstance = DatabaseConnection.getInstance("postgres", "azerty");
 
-        new UnsecureSocketServer(dbInstance).start();
+        new SecureSocketServer(dbInstance).start();
     }
 }
