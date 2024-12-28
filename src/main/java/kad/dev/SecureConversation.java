@@ -1,7 +1,5 @@
 package main.java.kad.dev;
 
-import main.java.kad.dev.Conversation;
-import main.java.kad.dev.DatabaseConnection;
 
 import javax.net.ssl.SSLSocket;
 import java.io.IOException;

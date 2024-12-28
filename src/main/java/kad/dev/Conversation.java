@@ -27,10 +27,7 @@ public abstract class Conversation extends Thread {
                 try {
                     PrintWriter pw = new PrintWriter(this.db.getSessionSocket(client).getOutputStream(), false);
                     if (!sender.equals(client)) {
-                        System.out.println(sender+" : "+message);
                         pw.println("\n(" + sender + ") " + message);
-                        pw.print("\n(" + sender + ") " + message);
-                        pw.flush();
                     }
                     pw.print("> ");
                     pw.flush();
@@ -70,6 +67,7 @@ public abstract class Conversation extends Thread {
     }
 
     protected void handleConversation(Socket socket) {
+        String login = null;
         try {
             InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -77,7 +75,7 @@ public abstract class Conversation extends Thread {
 
             pw.print("login> ");
             pw.flush();
-            String login = bufferedReader.readLine();
+            login = bufferedReader.readLine().toLowerCase();
 
             this.db.login(login, socket);
             pw.println("\n\t** You are logged in successfully as: [" + login + "] **\n");
@@ -90,25 +88,31 @@ public abstract class Conversation extends Thread {
                 if (msg == null) {
                     break;
                 }
-                if( msg.startsWith("@") ) {
-                    String[] requestParams = msg.split(" ");
-                    if( requestParams.length == 2 ) {
-                        String receiver = requestParams[0].substring(1);
-                        if( this.db.getAllConnectedUsers().contains(receiver) ) {
-                            String content = requestParams[1];
+                if (msg.startsWith("@")) {
+                    int firstSpaceIndex = msg.indexOf(" ");
+                    if (firstSpaceIndex > 0) {
+                        String receiver = msg.substring(1, firstSpaceIndex);
+                        String content = msg.substring(firstSpaceIndex + 1);
+
+                        if (this.db.getAllConnectedUsers().contains(receiver)) {
                             this.unicast(content, receiver);
                             pw.print("> ");
                             pw.flush();
                         }
                     }
-                } else {
+                }
+                else {
                     this.broadcast(msg);
                 }
             }
-            this.db.logout(login);
-            socket.close();
         } catch (IOException e) {
-            System.err.println("Error handling client: " + e.getMessage());
+
+        } finally {
+            try {
+                this.db.logout(login);
+                socket.close();
+                System.err.println("[Client logged by: "+login+"] is Disconnected! ");
+            } catch (IOException e) {}
         }
     }
 

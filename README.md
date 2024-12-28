@@ -17,12 +17,12 @@ The application supports:
 <img src="./screens/structure.png">
 <h3>Database schema</h3>
 <img src="./screens/db.png">
-````sql
+<pre>
 CREATE TABLE users (
         login VARCHAR(50) PRIMARY KEY,
         isConnected BOOLEAN DEFAULT FALSE
 );
-````
+</pre>
 <h3>Compile the Application</h3>
 <pre>
 javac -cp ".;lib/postgresql-42.6.0.jar" -d target/classes src/main/java/kad/dev/*.java

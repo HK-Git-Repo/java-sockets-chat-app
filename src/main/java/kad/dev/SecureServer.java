@@ -4,8 +4,9 @@ import java.io.Console;
 import java.util.Scanner;
 
 public class SecureServer {
-    /*private static String[] databaseCredentials() {
-        String[] res = new String[2];
+    private static String[] credentials = new String[2];
+    private static void databaseCredentials() {
+
         Console console = System.console();
         if (console == null) {
             System.out.println("No console available");
@@ -15,19 +16,18 @@ public class SecureServer {
 
         System.out.print("Enter PostgreSQL Username: ");
         String username = scanner.nextLine();
-        res[0] = username;
+        credentials[0] = username;
 
         System.out.print("Enter PostgreSQL Password: ");
         char[] passwordArray = console.readPassword();
         String password = new String(passwordArray);
-        res[1] = password;
-        return res;
-    }*/
+        credentials[1] = password;
+    }
     public static void main(String[] args) {
 
-       // String[] credentials = databaseCredentials();
-        DatabaseConnection dbInstance = DatabaseConnection.getInstance("postgres", "azerty");
-
+        databaseCredentials();
+        DatabaseConnection dbInstance = DatabaseConnection.getInstance(credentials[0], credentials[1]);
+        System.setProperty("javax.net.debug", "");
         new SecureSocketServer(dbInstance).start();
     }
 }

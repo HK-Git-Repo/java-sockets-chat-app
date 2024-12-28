@@ -44,7 +44,7 @@ public class SecureSocketServer extends Thread {
     @Override
     public void run() {
         try {
-            System.setProperty("javax.net.debug", "ssl,handshake");
+            //System.setProperty("javax.net.debug", "ssl,handshake");
 
             SSLContext sslContext = createSSLContext();
 

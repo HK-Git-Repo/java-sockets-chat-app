@@ -54,6 +54,7 @@ public class DatabaseConnection {
                         int rowsInserted = insertStmt.executeUpdate();
                         if (rowsInserted > 0) {
                             this.session.put(login, socket);
+                            System.out.println("login: "+login+",  socket: "+socket);
                             return true;
                         }
                     }
@@ -66,6 +67,7 @@ public class DatabaseConnection {
                         int rowsUpdated = updateStmt.executeUpdate();
                         if (rowsUpdated > 0) {
                             this.session.put(login, socket);
+                            System.out.println("login: "+login+",  socket: "+socket);
                             return true;
                         }
                     }
