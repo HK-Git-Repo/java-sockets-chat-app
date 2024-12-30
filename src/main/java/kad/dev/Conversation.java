@@ -100,6 +100,10 @@ public abstract class Conversation extends Thread {
                             pw.flush();
                         }
                     }
+                } else if (msg.length() == 1 && msg.startsWith("\\")) {
+                    this.db.getAllConnectedUsers().forEach(pw::println);
+                    pw.print("> ");
+                    pw.flush();
                 }
                 else {
                     this.broadcast(msg);

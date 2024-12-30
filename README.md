@@ -19,7 +19,8 @@ The application supports:
 <img src="./screens/db.png">
 <pre>
 CREATE TABLE users (
-        login VARCHAR(50) PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
+        login VARCHAR(50) NOT NULL,
         isConnected BOOLEAN DEFAULT FALSE
 );
 </pre>
